@@ -60,3 +60,54 @@ function atualizaEstatisticas(peca) {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
 };
+
+/* Maneira não simplificada:
+
+const imgRobo = document.querySelector("img");
+let contadorCliqueImg = 0;
+
+imgRobo.addEventListener("click", () => {
+    contadorCliqueImg++;
+
+    if (contadorCliqueImg === 7){
+        contadorCliqueImg = 1;
+    }
+
+    if (contadorCliqueImg === 1){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Vermelho.png")
+    }
+    if (contadorCliqueImg === 2){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Azul.png")
+    }
+    if (contadorCliqueImg === 3){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Amarelo.png")
+    }
+    if (contadorCliqueImg === 4){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Branco.png")
+    }
+    if (contadorCliqueImg === 5){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Preto.png")
+    }
+    if (contadorCliqueImg === 6){
+        imgRobo.setAttribute("src", "img/Robotron 2000 - Rosa.png")
+    }
+})
+
+----------------------------------------------------
+Maneira simplificada: */
+
+const imgRobo = document.querySelector("img");
+let contadorCliqueImg = 0;
+const imagens = [
+  "img/Robotron 2000 - Vermelho.png",
+  "img/Robotron 2000 - Azul.png",
+  "img/Robotron 2000 - Amarelo.png",
+  "img/Robotron 2000 - Branco.png",
+  "img/Robotron 2000 - Preto.png",
+  "img/Robotron 2000 - Rosa.png"
+];
+
+imgRobo.addEventListener("click", () => {
+  contadorCliqueImg = (contadorCliqueImg + 1) % imagens.length;
+  imgRobo.setAttribute("src", imagens[contadorCliqueImg]);
+});
